@@ -32,6 +32,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	private static JComboBox<String> cbxFormes;
 	private static JTextField txtBrevet;
 	private JTextField txtExicipient;
+	private static JComboBox<String> cbxComposants;
 
 	/**
 	 * Méthode statique permettant de réinitialiser les champs
@@ -56,6 +57,9 @@ public class MedicineAdd extends JDialog implements MyView{
 	public static String getTxtForm(){
 		return (String) cbxFormes.getSelectedItem();
 	}
+	public static String getTxtComposant(){
+		return (String) cbxComposants.getSelectedItem();
+	}
 	
 	/**
 	 * Méthode statique permettant d'obtenir le contenu du champ texte date brevet
@@ -76,6 +80,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	/**
 	 * Create the dialog.
 	 * @param forms les formes à intégrer dans la liste déroulante
+	 * @param composants 
 	 */
 	public MedicineAdd(String[] forms) {
 		setTitle("M\u00E9dicament - Ajouter");
@@ -123,7 +128,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		JComboBox cbxPrincipeActif = new JComboBox(forms);
+		JComboBox cbxPrincipeActif = new JComboBox<String>();
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		

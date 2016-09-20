@@ -11,6 +11,7 @@ import javax.swing.JTable;
 
 import library.DatesConverter;
 import library.Persistence;
+import model.Composant;
 import model.Form;
 import model.Medicine;
 import view.MedicineAdd;
@@ -51,6 +52,18 @@ public class Ctrl implements ActionListener, MouseListener{
 		for(int i=0;i<dataMed.length;i++){
 			new Medicine(dataMed[i][1],Form.getFormById(Integer.parseInt(dataMed[i][5])),DatesConverter.USStringToDate(dataMed[i][2]));
 		}
+		
+		String[][] dataComp = null;
+		try {
+			dataComp = Persistence.load("Composant");
+		} catch (SQLException e) {
+			String message = "Erreur lors de l'echange avec la base de données. L'application a rencontrée l'erreur : "+e.getMessage();
+			JOptionPane.showMessageDialog(null,message,"Erreur SQL",JOptionPane.ERROR_MESSAGE);
+		}
+		for(int i=0;i<dataComp.length;i++){
+			new Composant(Integer.parseInt(dataComp[i][0]),dataComp[i][1]);
+		}
+		
 	}
 
 	/**
@@ -203,6 +216,16 @@ public class Ctrl implements ActionListener, MouseListener{
 		}
 		return liste;
 	}
+	private String[] ComposantsBox(){
+		int i=0;
+		String[] liste=new String[Composant.allTheComposant.size()];
+		for(Composant c : Composant.allTheComposant){
+			liste[i]=c.getName();
+			i++;
+		}
+		return liste;
+		
+	}
 
 	/**
 	 * Méthode déclanchée lors de clics souris sur l'application
@@ -224,6 +247,11 @@ public class Ctrl implements ActionListener, MouseListener{
 			data[2]=DatesConverter.dateToStringFR(med.getPatentDate());
 			//Création de la vue de modification du médicament sélectionné dans la jtable
 			MedicineChange frame = new MedicineChange(this.formsBox(),data);
+			//Assignation d'un observateur sur cette vue
+			frame.assignListener(this);
+			//Affichage de la vue
+			frame.setVisible(true);
+			MedicineChange frame = new MedicineChange(this.ComposantsBox(),data);
 			//Assignation d'un observateur sur cette vue
 			frame.assignListener(this);
 			//Affichage de la vue
