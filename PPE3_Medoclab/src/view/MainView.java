@@ -11,6 +11,7 @@ import controller.Ctrl;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 /**
  * Classe définissant la vue générale de l'application
@@ -59,7 +60,7 @@ public class MainView extends JFrame implements MyView{
 		contentPane.setLayout(null);
 		
 		btnManuel = new JButton("Gestion des m\u00E9dicaments");
-		btnManuel.setBounds(54, 56, 309, 23);
+		btnManuel.setBounds(63, 83, 309, 23);
 		contentPane.add(btnManuel);
 		
 		JButton btnFermer = new JButton("Quitter");
