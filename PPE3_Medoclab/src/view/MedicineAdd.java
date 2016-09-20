@@ -101,7 +101,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>(/*forms*/);
+		cbxFormes = new JComboBox<String>(forms);
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		
@@ -123,7 +123,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		JComboBox cbxPrincipeActif = new JComboBox();
+		JComboBox cbxPrincipeActif = new JComboBox(forms);
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
