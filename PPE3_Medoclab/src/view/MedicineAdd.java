@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
+import javax.swing.JToggleButton;
 
 /**
  * Classe définissant la vue d'ajout d'un médicament
@@ -30,6 +31,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	private static JTextField txtNom;
 	private static JComboBox<String> cbxFormes;
 	private static JTextField txtBrevet;
+	private JTextField txtExicipient;
 
 	/**
 	 * Méthode statique permettant de réinitialiser les champs
@@ -78,7 +80,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	public MedicineAdd(String[] forms) {
 		setTitle("M\u00E9dicament - Ajouter");
 		setModal(true);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 464);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -114,16 +116,25 @@ public class MedicineAdd extends JDialog implements MyView{
 		txtBrevet.setColumns(10);
 		
 		JLabel lbComposition = new JLabel("Composition :");
-		lbComposition.setBounds(63, 169, 80, 14);
+		lbComposition.setBounds(65, 194, 80, 14);
 		contentPanel.add(lbComposition);
 		
 		JLabel lblPrincipeActif = new JLabel("Principe actif  : ");
-		lblPrincipeActif.setBounds(155, 169, 80, 14);
+		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
+		JComboBox cbxPrincipeActif = new JComboBox();
+		cbxPrincipeActif.setBounds(245, 216, 161, 20);
+		contentPanel.add(cbxPrincipeActif);
+		
 		JLabel lbExicipient = new JLabel("Exicipient(s) :");
-		lbExicipient.setBounds(155, 194, 80, 14);
+		lbExicipient.setBounds(155, 264, 80, 14);
 		contentPanel.add(lbExicipient);
+		
+		txtExicipient = new JTextField();
+		txtExicipient.setBounds(246, 261, 160, 20);
+		contentPanel.add(txtExicipient);
+		txtExicipient.setColumns(10);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
