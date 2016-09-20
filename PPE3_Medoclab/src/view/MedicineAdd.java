@@ -112,6 +112,18 @@ public class MedicineAdd extends JDialog implements MyView{
 		txtBrevet.setBounds(140, 84, 192, 20);
 		contentPanel.add(txtBrevet);
 		txtBrevet.setColumns(10);
+		
+		JLabel lbComposition = new JLabel("Composition :");
+		lbComposition.setBounds(63, 169, 80, 14);
+		contentPanel.add(lbComposition);
+		
+		JLabel lblPrincipeActif = new JLabel("Principe actif  : ");
+		lblPrincipeActif.setBounds(155, 169, 80, 14);
+		contentPanel.add(lblPrincipeActif);
+		
+		JLabel lbExicipient = new JLabel("Exicipient(s) :");
+		lbExicipient.setBounds(155, 194, 80, 14);
+		contentPanel.add(lbExicipient);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
