@@ -251,11 +251,7 @@ public class Ctrl implements ActionListener, MouseListener{
 			frame.assignListener(this);
 			//Affichage de la vue
 			frame.setVisible(true);
-			MedicineChange frame = new MedicineChange(this.ComposantsBox(),data);
-			//Assignation d'un observateur sur cette vue
-			frame.assignListener(this);
-			//Affichage de la vue
-			frame.setVisible(true);
+			
 		 } 
 	}
 
