@@ -99,7 +99,7 @@ public class Ctrl implements ActionListener, MouseListener{
 			switch(what){
 			case "ajout":
 				//Création de la vue d'ajout d'un médicament
-				MedicineAdd frame = new MedicineAdd(this.formsBox());
+				MedicineAdd frame = new MedicineAdd(this.formsBox(), this.ComposantsBox());
 				//Assignation d'un observateur sur cette vue
 				frame.assignListener(this);
 				//Affichage de la vue
