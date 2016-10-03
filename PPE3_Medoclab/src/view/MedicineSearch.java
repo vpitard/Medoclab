@@ -25,6 +25,7 @@ public class MedicineSearch extends JDialog implements MyView{
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private static JTable tableMed;
+	private JTable table;
 	
 	/**
 	 * Méthode permettant de mettre à jour le contenu de la table
@@ -60,6 +61,10 @@ public class MedicineSearch extends JDialog implements MyView{
 				scrollPane.setViewportView(tableMed);
 			}
 		}
+		
+		table = new JTable();
+		table.setBounds(0, 0, 1, 1);
+		contentPanel.add(table);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

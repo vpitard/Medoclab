@@ -1,11 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.SystemColor;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import controller.Ctrl;
@@ -16,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
+import javax.swing.ListSelectionModel;
+import javax.swing.JList;
+import java.awt.Scrollbar;
 
 /**
  * Classe définissant la vue d'ajout d'un médicament
@@ -31,7 +37,6 @@ public class MedicineAdd extends JDialog implements MyView{
 	private static JTextField txtNom;
 	private static JComboBox<String> cbxFormes;
 	private static JTextField txtBrevet;
-	private JTextField txtExicipient;
 	private static JComboBox<String> cbxComposants;
 
 	/**
@@ -106,7 +111,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>(forms);
+		cbxFormes = new JComboBox<String>()/*"forms"*/;
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		
@@ -128,7 +133,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		JComboBox cbxPrincipeActif = new JComboBox<String>(Composants);
+		JComboBox cbxPrincipeActif = new JComboBox<String>()/*Composants*/;
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
@@ -136,10 +141,19 @@ public class MedicineAdd extends JDialog implements MyView{
 		lbExicipient.setBounds(155, 264, 80, 14);
 		contentPanel.add(lbExicipient);
 		
-		txtExicipient = new JTextField();
-		txtExicipient.setBounds(246, 261, 160, 20);
-		contentPanel.add(txtExicipient);
-		txtExicipient.setColumns(10);
+		JList list = new JList(Composants);
+		list.setBounds(256, 263, 150, 80);
+		list.setLayoutOrientation(JList.VERTICAL_WRAP);
+		list.setBackground(SystemColor.controlHighlight); 
+		//list.setSelectionModel(selectionModel);
+/*		scrollPane.setViewportView(list);*/
+		JScrollPane scrollPane = new JScrollPane(/*list*/);
+		scrollPane.setPreferredSize(new Dimension( 250,80));		
+		
+		Scrollbar scrollbar = new Scrollbar();
+		scrollbar.setBounds(390, 264, 17, 79);
+		contentPanel.add(scrollbar);
+		contentPanel.add(list);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -165,6 +179,11 @@ public class MedicineAdd extends JDialog implements MyView{
 		}
 	}
 
+
+	private Dimension preferredSize(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public void assignListener(Ctrl ctrl) {
