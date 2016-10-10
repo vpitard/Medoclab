@@ -37,7 +37,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	private static JTextField txtNom;
 	private static JComboBox<String> cbxFormes;
 	private static JTextField txtBrevet;
-	private static JComboBox<String> cbxComposants;
+	private static JComboBox<String> cbxPrincipeActif;
 
 	/**
 	 * Méthode statique permettant de réinitialiser les champs
@@ -63,7 +63,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		return (String) cbxFormes.getSelectedItem();
 	}
 	public static String getTxtComposant(){
-		return (String) cbxComposants.getSelectedItem();
+		return (String) cbxPrincipeActif.getSelectedItem();
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		JComboBox cbxPrincipeActif = new JComboBox<String>(Composants)/*Composants*/;
+		cbxPrincipeActif = new JComboBox<String>(Composants)/*Composants*/;
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
@@ -144,9 +144,8 @@ public class MedicineAdd extends JDialog implements MyView{
 		JList list = new JList(Composants);
 		list.setBounds(256, 263, 150, 80);
 		list.setLayoutOrientation(JList.VERTICAL_WRAP);
-		list.setBackground(SystemColor.controlHighlight); 
+		list.setBackground(SystemColor.controlHighlight);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportView(list);
 		
 		
 		

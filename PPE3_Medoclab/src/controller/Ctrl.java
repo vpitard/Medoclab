@@ -50,7 +50,12 @@ public class Ctrl implements ActionListener, MouseListener{
 			JOptionPane.showMessageDialog(null,message,"Erreur SQL",JOptionPane.ERROR_MESSAGE);
 		}
 		for(int i=0;i<dataMed.length;i++){
-			new Medicine(dataMed[i][1],Form.getFormById(Integer.parseInt(dataMed[i][5])),DatesConverter.USStringToDate(dataMed[i][2]));
+			if(dataMed[i][6]!=null){
+				new Medicine(dataMed[i][1],Form.getFormById(Integer.parseInt(dataMed[i][5])),DatesConverter.USStringToDate(dataMed[i][2]),Composant.getComposantById(Integer.parseInt(dataMed[i][6]))); // + ,Composant.getComposantById(Integer.parseInt(dataMed[i][6]))
+			}
+			else{
+				new Medicine(dataMed[i][1],Form.getFormById(Integer.parseInt(dataMed[i][5])),DatesConverter.USStringToDate(dataMed[i][2]),null);
+			}
 		}
 		
 		String[][] dataComp = null;
@@ -128,13 +133,15 @@ public class Ctrl implements ActionListener, MouseListener{
 				}
 				else{
 					String nomF = MedicineAdd.getTxtForm();
+					String nomPA = MedicineAdd.getTxtComposant();
 					Form forme = Form.getFormByName(nomF);
 					String dateB = MedicineAdd.getTxtPatentDate();
+					Composant principeActif = Composant.getComposantByNom(nomPA);
 					//Création du nouvel objet Medicine
-					Medicine med = new Medicine(nom,forme,DatesConverter.FRStringToDate(dateB));
+					Medicine med = new Medicine(nom,forme,DatesConverter.FRStringToDate(dateB), principeActif); // + principeActif 
 					//INSERT dans la BD
 					try {
-						Persistence.insertMedicine(med.getName(),med.getItsForm().getId(),med.getPatentDate());
+						Persistence.insertMedicine(med.getName(),med.getItsForm().getId(),med.getPatentDate(),med.getPrincipeActif().getId());
 						//Message de confirmation pour l'utilisateur
 						JOptionPane.showMessageDialog(null,"Le médicament a bien été ajouté","Confirmation Enregistrement",JOptionPane.INFORMATION_MESSAGE);
 						//Réinitialisation des champs

@@ -21,6 +21,10 @@ public class Medicine {
 	 */
 	private GregorianCalendar patentDate;
 	/**
+	 * Principe actif du médicament
+	 */
+	private Composant principeActif; // +
+	/**
 	 * Liste statique de tous les médicaments
 	 */
 	public static ArrayList<Medicine> allTheMedicines = new ArrayList<Medicine>();
@@ -31,11 +35,12 @@ public class Medicine {
 	 * @param itsForm forme pharmaceutique du nouveau médicament
 	 * @param patentDate date d'obtention du brevet du nouveau médicament
 	 */
-	public Medicine(String name, Form itsForm, GregorianCalendar patentDate) {
+	public Medicine(String name, Form itsForm, GregorianCalendar patentDate, Composant unPrincipeActif) { // + , Composant unPrincipeActif
 		super();
 		this.name = name;
 		this.itsForm = itsForm;
 		this.patentDate = patentDate;
+		this.principeActif = unPrincipeActif; // +
 		allTheMedicines.add(this);
 	}
 
@@ -54,13 +59,21 @@ public class Medicine {
 	public Form getItsForm() {
 		return itsForm;
 	}
-
+	
 	/**
 	 * Accesseur en lecture sur la date d'obtention du brevet du médicament
 	 * @return la date d'obtention du brevet du médicament
 	 */
 	public GregorianCalendar getPatentDate() {
 		return patentDate;
+	}
+	
+	/**
+	 * Accesseur en lecture sur le principe actif du médicament
+	 * @return le principe actif du médicament
+	 */
+	public Composant getPrincipeActif(){ //+
+		return principeActif;
 	}
 	
 	/**
@@ -92,6 +105,14 @@ public class Medicine {
 	 */
 	public void setPatentDate(GregorianCalendar patentDate) {
 		this.patentDate = patentDate;
+	}
+	
+	/**
+	 * Accesseur en écriture sur le principe actif du médicament
+	 * @param unPrincipeActif le nouveau principe actif du médicament
+	 */
+	public void setPrincipeActif(Composant unPrincipeActif) { // +
+		this.principeActif = unPrincipeActif;
 	}
 
 	
