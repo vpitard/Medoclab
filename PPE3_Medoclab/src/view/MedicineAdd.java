@@ -22,6 +22,7 @@ import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.JList;
 import java.awt.Scrollbar;
+import javax.swing.ScrollPaneConstants;
 
 /**
  * Classe définissant la vue d'ajout d'un médicament
@@ -111,7 +112,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>(forms)/*"forms"*/;
+		cbxFormes = new JComboBox<String>()/*"forms"*/;
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		
@@ -133,7 +134,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		cbxPrincipeActif = new JComboBox<String>(Composants)/*Composants*/;
+		cbxPrincipeActif = new JComboBox<String>()/*Composants*/;
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
@@ -141,17 +142,14 @@ public class MedicineAdd extends JDialog implements MyView{
 		lbExicipient.setBounds(155, 264, 80, 14);
 		contentPanel.add(lbExicipient);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_1.setBounds(250, 264, 156, 98);
+		contentPanel.add(scrollPane_1);
+		
 		JList list = new JList(Composants);
-		list.setBounds(256, 263, 150, 80);
-		list.setLayoutOrientation(JList.VERTICAL_WRAP);
-		list.setBackground(SystemColor.controlHighlight);
+		scrollPane_1.setViewportView(list);
 		JScrollPane scrollPane = new JScrollPane();
-		
-		
-		
-		
-		
-		contentPanel.add(list);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
