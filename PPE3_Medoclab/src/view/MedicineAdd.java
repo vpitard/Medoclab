@@ -111,7 +111,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>()/*"forms"*/;
+		cbxFormes = new JComboBox<String>(forms)/*"forms"*/;
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		
@@ -133,7 +133,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		JComboBox cbxPrincipeActif = new JComboBox<String>()/*Composants*/;
+		JComboBox cbxPrincipeActif = new JComboBox<String>(Composants)/*Composants*/;
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
@@ -145,14 +145,13 @@ public class MedicineAdd extends JDialog implements MyView{
 		list.setBounds(256, 263, 150, 80);
 		list.setLayoutOrientation(JList.VERTICAL_WRAP);
 		list.setBackground(SystemColor.controlHighlight); 
-		//list.setSelectionModel(selectionModel);
-/*		scrollPane.setViewportView(list);*/
-		JScrollPane scrollPane = new JScrollPane(/*list*/);
-		scrollPane.setPreferredSize(new Dimension( 250,80));		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportView(list);
 		
-		Scrollbar scrollbar = new Scrollbar();
-		scrollbar.setBounds(390, 264, 17, 79);
-		contentPanel.add(scrollbar);
+		
+		
+		
+		
 		contentPanel.add(list);
 		{
 			JPanel buttonPane = new JPanel();
