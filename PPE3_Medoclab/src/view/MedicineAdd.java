@@ -12,7 +12,10 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import controller.Ctrl;
+import model.Composant;
+
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -39,6 +42,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	private static JComboBox<String> cbxFormes;
 	private static JTextField txtBrevet;
 	private static JComboBox<String> cbxPrincipeActif;
+	private static JList list;
 
 	/**
 	 * Méthode statique permettant de réinitialiser les champs
@@ -63,8 +67,14 @@ public class MedicineAdd extends JDialog implements MyView{
 	public static String getTxtForm(){
 		return (String) cbxFormes.getSelectedItem();
 	}
+	
+	
 	public static String getTxtComposant(){
 		return (String) cbxPrincipeActif.getSelectedItem();
+	}
+	
+	public static int[] getIndexExipients(){
+		return (int[]) list.getSelectedIndices();
 	}
 	
 	/**
@@ -112,7 +122,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>()/*"forms"*/;
+		cbxFormes = new JComboBox<String>(forms)/*"forms"*/;
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		
@@ -134,7 +144,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblPrincipeActif.setBounds(155, 219, 80, 14);
 		contentPanel.add(lblPrincipeActif);
 		
-		cbxPrincipeActif = new JComboBox<String>()/*Composants*/;
+		cbxPrincipeActif = new JComboBox<String>(Composants)/*Composants*/;
 		cbxPrincipeActif.setBounds(245, 216, 161, 20);
 		contentPanel.add(cbxPrincipeActif);
 		
@@ -147,7 +157,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		scrollPane_1.setBounds(250, 264, 156, 98);
 		contentPanel.add(scrollPane_1);
 		
-		JList list = new JList(Composants);
+		list = new JList(Composants);
 		scrollPane_1.setViewportView(list);
 		JScrollPane scrollPane = new JScrollPane();
 		{

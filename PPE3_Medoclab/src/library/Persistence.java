@@ -37,6 +37,42 @@ public abstract class Persistence {
 			Persistence.closeConnection(cn);
 		}
 	}
+	
+	public static int getNbMedicine() throws SQLException{
+		ResultSet rs;
+		int nbMed =0;
+		Connection cn = Persistence.connection();
+		Statement stmt;
+		try{
+			 stmt = cn.createStatement();
+			 rs = stmt.executeQuery("SELECT COUNT(*) AS nb FROM medicament ");
+			 
+			 while(rs.next()){
+				 nbMed = rs.getInt("nb");
+			 }
+		}catch (SQLException e){
+			throw e;
+		}
+		finally{
+			Persistence.closeConnection(cn);
+		}
+		return nbMed;
+	}
+	
+	public static void ajouterExipient(int idExipient, int idMed) throws SQLException{
+		Connection cn = Persistence.connection();
+		Statement stmt;
+		try{
+			 stmt = cn.createStatement();
+			 stmt.executeUpdate("INSERT INTO est_composant_de (codeComposant,codeMedicament) VALUES ("+idExipient+","+idMed+")");
+		}catch (SQLException e){
+			throw e;
+		}
+		finally{
+			Persistence.closeConnection(cn);
+		}
+	}
+	
 	/**
 	 * Méthode d'INSERT d'une nouvelle forme
 	 * @param name le nom de la nouvelle forme

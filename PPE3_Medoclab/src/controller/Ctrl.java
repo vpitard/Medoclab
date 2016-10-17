@@ -137,15 +137,27 @@ public class Ctrl implements ActionListener, MouseListener{
 					Form forme = Form.getFormByName(nomF);
 					String dateB = MedicineAdd.getTxtPatentDate();
 					Composant principeActif = Composant.getComposantByNom(nomPA);
+					int[] listeIndexExipients = MedicineAdd.getIndexExipients();
 					//Création du nouvel objet Medicine
 					Medicine med = new Medicine(nom,forme,DatesConverter.FRStringToDate(dateB), principeActif); // + principeActif 
 					//INSERT dans la BD
+					/*for(int i=0;i<listeIndexExipients.length;i++){
+						JOptionPane.showMessageDialog(null,listeIndexExipients[i],"Confirmation Enregistrement",JOptionPane.INFORMATION_MESSAGE);
+					}*/
 					try {
 						Persistence.insertMedicine(med.getName(),med.getItsForm().getId(),med.getPatentDate(),med.getPrincipeActif().getId());
 						//Message de confirmation pour l'utilisateur
+						
+						int idMed = Persistence.getNbMedicine();
+						for(int i=0;i<listeIndexExipients.length;i++){
+							int exipientCourant = listeIndexExipients[i];
+							Persistence.ajouterExipient(exipientCourant+1,idMed);
+						}
+						
 						JOptionPane.showMessageDialog(null,"Le médicament a bien été ajouté","Confirmation Enregistrement",JOptionPane.INFORMATION_MESSAGE);
 						//Réinitialisation des champs
 						MedicineAdd.init();
+						
 					} catch (SQLException e) {
 						String message = "Erreur lors de l'echange avec la base de données. L'application a rencontrée l'erreur : "+e.getMessage();
 						JOptionPane.showMessageDialog(null,message,"Erreur SQL",JOptionPane.ERROR_MESSAGE);
