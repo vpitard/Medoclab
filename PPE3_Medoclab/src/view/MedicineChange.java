@@ -77,7 +77,7 @@ public class MedicineChange extends JDialog implements MyView{
 		txtNom.setBounds(140, 42, 192, 20);
 		contentPanel.add(txtNom);
 		txtNom.setColumns(10);
-		txtNom.setText(medicine[0]);
+		txtNom.setText("RETROVIR");
 		
 		JLabel lblForme = new JLabel("Forme :");
 		lblForme.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -85,6 +85,7 @@ public class MedicineChange extends JDialog implements MyView{
 		contentPanel.add(lblForme);
 		
 		cbxFormes = new JComboBox<String>(/*forms*/);
+		cbxFormes.setToolTipText("");
 		cbxFormes.setBounds(140, 124, 192, 20);
 		contentPanel.add(cbxFormes);
 		cbxFormes.setSelectedItem(medicine[1]);
@@ -98,7 +99,7 @@ public class MedicineChange extends JDialog implements MyView{
 		txtBrevet.setBounds(140, 83, 192, 20);
 		contentPanel.add(txtBrevet);
 		txtBrevet.setColumns(10);
-		txtBrevet.setText(medicine[2]);
+		txtBrevet.setText("12-5-1995");
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

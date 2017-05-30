@@ -99,7 +99,7 @@ public class MedicineAdd extends JDialog implements MyView{
 	 * @param composants 
 	 */
 	public MedicineAdd(String[] forms, String[] Composants) {
-		setTitle("M\u00E9dicament - Ajouter");
+		setTitle("M\u00E9dicament - Modifier");
 		setModal(true);
 		setBounds(100, 100, 450, 464);
 		getContentPane().setLayout(new BorderLayout());
@@ -122,7 +122,7 @@ public class MedicineAdd extends JDialog implements MyView{
 		lblForme.setBounds(63, 128, 70, 14);
 		contentPanel.add(lblForme);
 		
-		cbxFormes = new JComboBox<String>(forms)/*"forms"*/;
+		cbxFormes = new JComboBox<String>(forms)/*forms*/;
 		cbxFormes.setBounds(140, 125, 192, 20);
 		contentPanel.add(cbxFormes);
 		

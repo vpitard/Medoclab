@@ -27,7 +27,7 @@ public abstract class Persistence {
 		try{
 			 stmt = cn.createStatement();
 			 if(patentDate!=null)
-				 stmt.executeUpdate("INSERT INTO medicament (nom,idForme,dateBrevet,codePA) VALUES ('"+name+"',"+idForm+"','"+DatesConverter.dateToStringUS(patentDate)+"',"+idPA+")"); // + ,codePA  + ,"+idPA+"
+				 stmt.executeUpdate("INSERT INTO medicament (nom,idForme,dateBrevet,codePA) VALUES ('"+name+"',"+idForm+",'"+DatesConverter.dateToStringUS(patentDate)+"',"+idPA+")"); // + ,codePA  + ,"+idPA+"
 			 else
 				 stmt.executeUpdate("INSERT INTO medicament (nom,idForme,dateBrevet,codePA) VALUES ('"+name+"',"+idForm+",null,"+idPA+")"); // + ,codePA  + ,'"+idPA+"'
 		}catch (SQLException e){
@@ -154,10 +154,9 @@ public abstract class Persistence {
 	 */
 	private static Connection connection() throws SQLException{
 		String host = "192.168.222.72";
-//		String host = "127.0.0.1:3306";
-		String base = "PiRoMa_bdMedocLab";
-		String user = "piroma";
-		String passwd = "Password1";
+		String base = "piroma_bdmedoclab_Pit";
+		String user = "vpitard";
+		String passwd = "pitard1";
 		Connection conn = null;
 		try
 		{
